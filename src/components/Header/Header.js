@@ -6,7 +6,6 @@ import {
   MenuItem,
   Toolbar,
   Tooltip,
-  Typography,
   Link
 } from "@material-ui/core";
 import { Add } from "@material-ui/icons";
@@ -50,11 +49,9 @@ const Header = () => {
               width="90px"
             />
             <Tooltip  disableFocusListener disableTouchListener title="View all classes">
-            <Typography variant="h6" className={classes.title} component={Link} underline="none">
               <Link href="/"  variant="h6" className={classes.title} underline="none">
                 Unify
               </Link>
-            </Typography>
             </Tooltip>
           </div>
           <div className={classes.header__wrapper__right}>

@@ -9,7 +9,7 @@ const Login = () => {
   return (
     <div className="login__bg">
     <div className="login">
-      <Button pill variant="outlined" color="inherit" size="large" onClick={() => login()}>
+      <Button variant="outlined" color="inherit" size="large" onClick={() => login()}>
         Login !!
       </Button>
     </div>

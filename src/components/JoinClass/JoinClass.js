@@ -1,13 +1,9 @@
 import React, { useState } from "react";
-import { Avatar, Button, Dialog, Slide, TextField } from "@material-ui/core";
+import { Avatar, Button, Dialog, TextField } from "@material-ui/core";
 import { useLocalContext } from "../../context/context";
 import { Close } from "@material-ui/icons";
 import "./style.css";
 import db from "../../lib/firebase";
-
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
 
 const JoinClass = () => {
   const formRef = React.useRef();
@@ -70,7 +66,6 @@ const JoinClass = () => {
         fullScreen
         open={joinClassDialog}
         onClose={() => setJoinClassDialog(false)}
-        TransitionComponent={Transition}
       >
         <form ref={formRef}>
         <div className="joinClass">
