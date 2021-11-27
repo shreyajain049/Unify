@@ -12,7 +12,7 @@ import db from "../../lib/firebase";
 
 
 const CreateClass = () => {
-      
+  const formRef = React.useRef();
   const {createClassDialog, setCreateClassDialog ,loggedInMail} = useLocalContext();
   
   const [className, setClassName] = useState("");
@@ -40,6 +40,11 @@ const CreateClass = () => {
         id: id,
       })
       .then(() => {
+        setClassName("");
+        setSubject("");
+        setSection("");
+        setSubjectCode("");
+        setCourseDescription("");
         setCreateClassDialog(false);
       });
   };
@@ -53,6 +58,8 @@ const CreateClass = () => {
         className="form__dialog"
       >
       <p className="class__title">Create Class</p>
+      
+      <form ref={formRef}>
       <div className="form__inputs">
         <TextField required
           id="filled-basic"
@@ -88,16 +95,17 @@ const CreateClass = () => {
         />
         <TextField
           id="filled-basic"
-          label="Course Description"
+          label="Course Description(100 chars only)"
           className="form__input"
           variant="filled"
           value={CourseDescription}
           multiline rows={2}
-          onChange={(e) => setCourseDescription(e.target.value)}
+          onChange={(e) => setCourseDescription(e.target.value.slice(0,100))}
         />
       </div>
+      </form>
       <DialogActions>
-        <Button onClick={addClass} color="primary">
+        <Button onClick={(e)=>{ if(formRef.current.reportValidity())addClass(e)}} color="primary">
           Create
         </Button>
       </DialogActions>
