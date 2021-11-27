@@ -1,0 +1,13 @@
+.login {
+  position: absolute;
+  left: 1050px;
+  top: 350px;
+}
+
+.login__bg {
+  background-image: url("../../assets/main_bg.jpg");
+  height: 720px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
