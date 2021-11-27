@@ -10,6 +10,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 const JoinClass = () => {
+  const formRef = React.useRef();
   const {
     joinClassDialog,
     setJoinClassDialog,
@@ -19,6 +20,7 @@ const JoinClass = () => {
   const [classCode, setClassCode] = useState("");
   const [email, setemail] = useState("");
   const [error, setError] = useState();
+  const [emailerror, setEmailError] = useState();
   const [joinedData, setJoinedData] = useState();
   const [classExists, setClassExists] = useState(false);
 
@@ -31,10 +33,17 @@ const JoinClass = () => {
       .doc(classCode)
       .get()
       .then((doc) => {
-        if (doc.exists && doc.owner !== loggedInUser.email) {
+        if (doc.exists) {
           setClassExists(true);
-          setJoinedData(doc.data());
-          setError(false);
+          if(email===loggedInUser.email)
+          {
+            setEmailError(true);
+          }
+          else
+          {
+            setJoinedData(doc.data());
+            setError(false);
+          }
         } else {
           setError(true);
           setClassExists(false);
@@ -63,6 +72,7 @@ const JoinClass = () => {
         onClose={() => setJoinClassDialog(false)}
         TransitionComponent={Transition}
       >
+        <form ref={formRef}>
         <div className="joinClass">
           <div className="joinClass__wrapper">
             <div
@@ -76,7 +86,7 @@ const JoinClass = () => {
               className="joinClass__btn"
               variant="contained"
               color="primary"
-              onClick={handleSubmit}
+              onClick={(e)=>{if(formRef.current.reportValidity())handleSubmit(e)}}
             >
               Join
             </Button>
@@ -113,7 +123,7 @@ const JoinClass = () => {
               Ask your teacher for the class code, then enter it here.
             </div>
             <div className="joinClass__loginInfo">
-              <TextField
+              <TextField required
                 id="outlined-basic"
                 label="Class Code"
                 variant="outlined"
@@ -122,18 +132,20 @@ const JoinClass = () => {
                 error={error}
                 helperText={error && "No class was found"}
               />
-              <TextField
+              <TextField required
                 id="outlined-basic"
                 label="Owner's email"
+                type="email"
                 variant="outlined"
                 value={email}
                 onChange={(e) => setemail(e.target.value)}
-                error={error}
-                helperText={error && "Email incorrect"}
+                error={emailerror}
+                helperText={emailerror && "You are the owner of this class !!"}
               />
             </div>
           </div>
         </div>
+        </form>
       </Dialog>
     </div>
   );

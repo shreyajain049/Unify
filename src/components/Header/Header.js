@@ -5,7 +5,9 @@ import {
   Menu,
   MenuItem,
   Toolbar,
-  Typography
+  Tooltip,
+  Typography,
+  Link
 } from "@material-ui/core";
 import { Add } from "@material-ui/icons";
 import React from "react";
@@ -47,12 +49,18 @@ const Header = () => {
               alt="Unify"
               width="90px"
             />
-            <Typography variant="h6" className={classes.title}>
-              Unify
+            <Tooltip  disableFocusListener disableTouchListener title="View all classes">
+            <Typography variant="h6" className={classes.title} component={Link} underline="none">
+              <Link href="/"  variant="h6" className={classes.title} underline="none">
+                Unify
+              </Link>
             </Typography>
+            </Tooltip>
           </div>
           <div className={classes.header__wrapper__right}>
+            <Tooltip  disableFocusListener disableTouchListener title="Join or Createa a class">
             <Add onClick={handleClick} className={classes.icon} />
+            </Tooltip>
             <Menu
               id="simple-menu"
               anchorEl={anchorEl}
@@ -64,13 +72,17 @@ const Header = () => {
               <MenuItem onClick={handleCreate}>Create Class</MenuItem>
             </Menu>
             <div>
+              <Tooltip  disableFocusListener disableTouchListener title={loggedInUser?.email}>
               <Avatar
                 src={loggedInUser?.photoURL}
                 className={classes.icon}
               />
+              </Tooltip>
             </div>
             <div>
+                <Tooltip  disableFocusListener disableTouchListener title="Logout">
                 <Button variant="primary" onClick={() => logout()}>Logout</Button>
+                </Tooltip>
             </div>
           </div>
         </Toolbar>
