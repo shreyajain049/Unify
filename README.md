@@ -7,7 +7,7 @@ The members of the classroom can also interact with each other by making any ann
 
 ## Tech stack
 
-![image]("%PUBLIC_URL%/TechStack.png)
+![image](https://raw.githubusercontent.com/shreyajain049/Unify/main/public/TechStack.png)
 
 ### Tools and Languages:
 
@@ -34,24 +34,5 @@ The members of the classroom can also interact with each other by making any ann
 5. `npm start`
 
 ## Useful Links
-
-- [Deployed Website]()
-- [Demo Video]()
-- [Sprint Document](https://docs.google.com/presentation/d/11k8pLJPEV-XJwxIX4ysW9fKmHqFEZHcUWizFcFyVsns/edit?usp=sharing)
-- [Design Document](https://docs.google.com/document/d/1IJcEbbhsbQna-tgcnfV_9_RhXQi4SURlrl3-0HypArE/edit?usp=sharing)
-
-## Need help?
-
-Feel free to contact me on [LinkedIn](https://www.linkedin.com/in/apurva866/)
-
-[![Instagram](https://img.shields.io/badge/Instagram-follow-purple.svg?logo=instagram&logoColor=white)](https://www.instagram.com/mind.wrapper/) [![Twitter](https://img.shields.io/badge/Twitter-follow-blue.svg?logo=twitter&logoColor=white)](https://twitter.com/mindwrapper) [![Medium](https://img.shields.io/badge/Medium-follow-black.svg?logo=medium&logoColor=white)](https://medium.com/@apurva866)
-
----
-
-```javascript
-if (youEnjoyed) {
-  starThisRepository();
-}
-```
 
 ---
