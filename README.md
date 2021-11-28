@@ -7,7 +7,7 @@ The members of the classroom can also interact with each other by making any ann
 
 ## Tech stack
 
-![image]("https://raw.githubusercontent.com/shreyajain049/Unify/main/public/TechStack.png")
+![image](https://raw.githubusercontent.com/shreyajain049/Unify/main/public/TechStack.png)
 
 ### Tools and Languages:
 
