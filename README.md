@@ -34,9 +34,3 @@ The members of the classroom can also interact with each other by making any ann
 5. `npm start`
 
 ## Useful Links
-
-<<<<<<< HEAD
----
-=======
-
->>>>>>> 7a42a7003ab03e6d732948c72bfd902b3837a511
