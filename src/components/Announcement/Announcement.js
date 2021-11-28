@@ -4,7 +4,6 @@ import db from "../../lib/firebase";
 import "./style.css";
 const Announcement = ({ classData }) => {
   const [announcement, setAnnouncement] = useState([]);
-
   useEffect(() => {
     if (classData) {
       let unsubscribe = db
@@ -24,8 +23,12 @@ const Announcement = ({ classData }) => {
         <div className="amt">
           <div className="amt__Cnt">
             <div className="amt__top">
-              <Avatar />
-              <div>{item.sender}</div>
+              <Avatar/>
+              <div>{item.sender}
+              <div className="amt__date">
+                <div>{item.sentOn} at {item.sentAt}</div>
+              </div>
+              </div>
             </div>
             <p className="amt__txt">{item.text}</p>
           </div>

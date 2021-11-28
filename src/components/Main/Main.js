@@ -2,7 +2,6 @@ import { Avatar, Button, TextField } from "@material-ui/core";
 import React, { useState } from "react";
 import db from "../../lib/firebase";
 import "./style.css";
-import firebase from "firebase";
 import { useLocalContext } from "../../context/context";
 import { Announcement } from "..";
 const Main = ({ classData }) => {
@@ -11,9 +10,8 @@ const Main = ({ classData }) => {
 
   const [showInput, setShowInput] = useState(false);
   const [inputValue, setInput] = useState("");
+  let v="0";
 
-  const[varzero,setVarzero]=useState("0");
-  
   const months = new Map();
   months.set('Jan','01');
   months.set('Feb','02'); 
@@ -28,42 +26,55 @@ const Main = ({ classData }) => {
   months.set('Nov','11');
   months.set('Dec','12');
   
-  
   var curtimestmp=Date();
   curtimestmp=curtimestmp.split(" ");
   let mon=curtimestmp[1];
   let mont=months.get(mon);
   let dat=curtimestmp[2];
   let year=curtimestmp[3];
+  let curdate=dat+" "+mon+" "+year;
+  let curtime=curtimestmp[4];
   let tme=curtimestmp[4];
   tme=tme.split(":");
   let time=tme[0]+tme[1]+tme[2];
+  if(tme[0]<12)
+    curtime+=" AM";
+  else
+  curtime+=" PM";
   var new_id=time+dat+mont+year;
 
-
-  /*
-  function padLeadingZeros(num, size) {
-    var s = num+"";
-    while (s.length < size) s = "0" + s;
-    return s;
-  }
-  
-  new_id=padLeadingZeros(new_id, new_id.length+3);
-*/
-  const setVar = () => {
-    let v=varzero+"0"
-    setVarzero(v);
-  };
-  const handleSend = (e) => {
+const handlesize = (e) => {
       e.preventDefault();
+      db.collection('Announcements')
+      .doc("classes")
+      .collection(classData.id)
+      .get()
+      .then(snap => {
+        let size = snap.size;
+        setVar(size,e);
+  });
+};
+  const setVar = (size,e) => {
+    let count=0;
+    while(size>count) 
+    {
+      v=v+"0"
+      count++;
+    }
+    v+=new_id;
+    handleSend(e,v);
+  };
+  const handleSend = (e,v) => {
+          e.preventDefault();
           db.collection("Announcements")
             .doc("classes")
             .collection(classData.id)
-            .doc(varzero+new_id)
+            .doc(v)
             .set({
-              timstamp: firebase.firestore.FieldValue.serverTimestamp(),
               text: inputValue,
               sender: loggedInMail,
+              sentOn: curdate,
+              sentAt: curtime,
             })
             
             .then(() => {
@@ -111,7 +122,7 @@ const Main = ({ classData }) => {
                       <div>
                         <Button
                           disabled={!inputValue}
-                          onClick={(e)=>{handleSend(e);setVar()}}
+                          onClick={(e)=>handlesize(e)}
                           color="primary"
                           variant="contained"
                         >
