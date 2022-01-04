@@ -5,8 +5,6 @@ Unify is a web application which can help students stay engaged in the learning 
 Anyone with the Google account can login in this app. The user can create a new class or join the existing classes. If the user creates a class, then a class code is generated that can be shared with respective joinees through any external platform. Then a user can join the respective class as a student with the provided class code and owner's email address.
 The members of the classroom can also interact with each other by making any announcements.Students can ask questions and anyone who knows the answer can help. Such discussions can help students process information rather than simply receive it.
 
-Here is the link to the deployed application: https://unify-38633.web.app
-
 ## Tech stack
 
 ![image](https://raw.githubusercontent.com/shreyajain049/Unify/main/public/TechStack.png)
@@ -37,7 +35,6 @@ Here is the link to the deployed application: https://unify-38633.web.app
 
 ## Useful Links
 
-- [Deployed Website](https://unify-38633.web.app)
 - [Demo Video](https://drive.google.com/file/d/1KHGBa4CTlONwDK-63kKUCnVXqwooUE9b/view?usp=sharing)
 
 ---
